@@ -51,8 +51,7 @@ public class StudentService {
     }
 
     public void exportJson(String filepath) {
-        try {
-            FileWriter writer = new FileWriter(filepath + ".json");
+        try (FileWriter writer = new FileWriter(filepath + ".json")) {
             writer.append("[");
 
             for (int i = 0; i < students.size(); i++) {
@@ -71,7 +70,7 @@ public class StudentService {
         }
         catch(IOException e)
         {
-            e.printStackTrace();
+            System.err.println("Error exporting JSON: " + e.getMessage());
         }
 
     }
