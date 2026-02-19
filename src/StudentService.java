@@ -30,10 +30,8 @@ public class StudentService {
     }
 
     public void exportCsv(String filepath){
-    try
+    try (FileWriter writer = new FileWriter(filepath + ".csv"))
     {
-        FileWriter writer = new FileWriter(filepath + ".csv");
-
         writer.append("id");
         writer.append(',');
         writer.append("name");
@@ -45,11 +43,10 @@ public class StudentService {
             writer.append('\n');
         }
         writer.flush();
-        writer.close();
     }
     catch(IOException e)
     {
-         e.printStackTrace();
+        System.err.println("Error exporting CSV: " + e.getMessage());
     } 
     }
 }
