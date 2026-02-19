@@ -25,6 +25,11 @@ public class Main{
             else if (listeee[0].equals("list")){
                 studentService.printList();
             }
+            else if (listeee[0].equals("export")){
+                if (listeee[1].equals("csv")){
+                    studentService.exportCsv(listeee[2]);
+                }
+            }
             else{
                 System.out.println("this command does not exist");
             }

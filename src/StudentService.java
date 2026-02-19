@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,5 +27,29 @@ public class StudentService {
                 break;
             }
         }
+    }
+
+    public void exportCsv(String filepath){
+    try
+    {
+        FileWriter writer = new FileWriter(filepath);
+
+        writer.append("id");
+        writer.append(',');
+        writer.append("name");
+        writer.append('\n');
+        for (Student student:students){
+            writer.append(String.valueOf(student.getId()));
+            writer.append(',');
+            writer.append(student.getName());
+            writer.append('\n');
+        }
+        writer.flush();
+        writer.close();
+    }
+    catch(IOException e)
+    {
+         e.printStackTrace();
+    } 
     }
 }
