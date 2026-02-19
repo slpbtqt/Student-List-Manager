@@ -9,20 +9,20 @@ public class Main{
             System.out.println("Student List Manager\n" + "Type 'help' to show commands.");
             String command = myObj.nextLine();  // Read user input
             String listeee[] = command.split(" ", command.length());
-            if (listeee[0] == "help"){
+            if (listeee[0].equals("help")){
                 System.out.println("Available commands:\n" + "  list\n" + "  add <id> <name>\n" + "  remove <id>\n" + "  export <format> <file_path>  (formats: csv, json)\n" + "  help\n" + "  quit");
             }
-            else if (listeee[0] ==  "quit") {
+            else if (listeee[0].equals("quit")) {
                 stop = true;
                 myObj.close();
             }
-            else if (listeee[0] == "add"){
+            else if (listeee[0].equals("add")){
                 studentService.addStudent(Integer.parseInt(listeee[1]), listeee[2]);
             }
-            else if (listeee[0] == "remove"){
+            else if (listeee[0].equals("remove")){
                 studentService.removeStudent(Integer.parseInt(listeee[1]));
             }
-            else if (listeee[0] == "list"){
+            else if (listeee[0].equals("list")){
                 studentService.printList();
             }
             else{
