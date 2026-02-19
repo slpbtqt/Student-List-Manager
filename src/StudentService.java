@@ -32,7 +32,7 @@ public class StudentService {
     public void exportCsv(String filepath){
     try
     {
-        FileWriter writer = new FileWriter(filepath);
+        FileWriter writer = new FileWriter(filepath + ".csv");
 
         writer.append("id");
         writer.append(',');
