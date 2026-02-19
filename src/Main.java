@@ -4,9 +4,9 @@ public class Main{
     public static void main(String[] args){
         StudentService studentService = new StudentService();
         boolean stop = false;
+        System.out.println("Student List Manager\n" + "Type 'help' to show commands.");
         while (stop == false){
             Scanner myObj = new Scanner(System.in);  // Scanner
-            System.out.println("Student List Manager\n" + "Type 'help' to show commands.");
             String command = myObj.nextLine();  // Read user input
             String listeee[] = command.split(" ", command.length());
             if (listeee[0].equals("help")){
