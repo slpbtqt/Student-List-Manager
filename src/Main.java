@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class Main{
     boolean stop;
     public static void main(String[] args){
+        StudentService studentService = new StudentService();
         boolean stop = false;
         while (stop == false){
             Scanner myObj = new Scanner(System.in);  // Scanner
@@ -13,18 +14,19 @@ public class Main{
             }
             else if (listeee[0] ==  "quit") {
                 stop = true;
+                myObj.close();
             }
             else if (listeee[0] == "add"){
-                StudentService.addStudent(listeee[1], listeee[2]);
+                studentService.addStudent(Integer.parseInt(listeee[1]), listeee[2]);
             }
             else if (listeee[0] == "remove"){
-                StudentService.removeStudent(listeee[1]);
+                studentService.removeStudent(Integer.parseInt(listeee[1]));
             }
             else if (listeee[0] == "list"){
-                StudentService.printList();
+                studentService.printList();
             }
             else{
-                System.out.println("this command does not exist")
+                System.out.println("this command does not exist");
             }
         }
     }
