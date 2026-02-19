@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService {
-    private final List<Student> students = new ArrayList<>(); 
-    
+    private final List<Student> students = new ArrayList<>();
+
     public void printList() {
         System.out.println("Students:");
         for (Student s : students) {
@@ -49,4 +49,31 @@ public class StudentService {
         System.err.println("Error exporting CSV: " + e.getMessage());
     } 
     }
+
+    public void exportJson(String filepath) {
+        try {
+            FileWriter writer = new FileWriter(filepath + ".json");
+            writer.append("[");
+
+            for (int i = 0; i < students.size(); i++) {
+                Student s = students.get(i);
+
+                writer.append("{")
+                        .append("\"id\":").append(String.valueOf(s.getId())).append(",")
+                        .append("\"name\":\"").append(s.getName()).append("\",")
+                        .append("}");
+
+                if (i < students.size() - 1) {
+                    writer.append(",");
+                }
+            }
+            writer.append("]");
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
 }
